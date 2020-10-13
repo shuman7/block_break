@@ -12,7 +12,6 @@ public class ballScript : MonoBehaviour
     {
         myRigid = this.GetComponent<Rigidbody>();
         myRigid.AddForce((transform.forward + transform.right) * ballSpeed, ForceMode.VelocityChange);
-        // myRigid.AddForce((transform.forward + transform.right) * ballSpeed, ForceMode.VelocityChange);
     }
 
     // Update is called once per frame
