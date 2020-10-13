@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9bee94ad0b66471eac6caaa24580eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barSpeed: 13
+  barSpeed: 8
 --- !u!1001 &1020994902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2061,7 +2061,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1688565749
 SphereCollider:
