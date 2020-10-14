@@ -6,7 +6,9 @@ public class ballScript : MonoBehaviour
 {
     public float ballSpeed = 30.0f;
     private Rigidbody myRigid;
-    public AudioClip sound;
+    public AudioClip wallSound;
+    public AudioClip blockSound;
+    public AudioClip gameOverSound;
     AudioSource audioSource;
     
     // Start is called before the first frame update
@@ -25,6 +27,17 @@ public class ballScript : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        audioSource.PlayOneShot(sound);
+        if((collision.gameObject.tag == "Wall") || (collision.gameObject.tag == "Player"))   
+        {
+            audioSource.PlayOneShot(wallSound);
+        }
+        if(collision.gameObject.tag == "Block")   
+        {
+            audioSource.PlayOneShot(blockSound);
+        }
+        if(collision.gameObject.tag == "GameOver")   
+        {
+            audioSource.PlayOneShot(gameOverSound);
+        }
     }
 }
