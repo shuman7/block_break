@@ -32,3 +32,6 @@ sysinfo.txt
 .vs
 Release/
 Debug/
+
+# Build iOS folder
+/block_break_iOS
