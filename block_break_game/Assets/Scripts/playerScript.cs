@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class playerScript : MonoBehaviour
 {
-    public float barSpeed = 1.0f;
+    // public float barSpeed = 1.0f;
     private Vector3 touchStartPos;
     private Vector3 touchEndPos;
     private Vector3 playerPos;
+    public float barSpeed = 1.0f;
+    Vector3 preMousePos;
 
     // Start is called before the first frame update
     void Start()
@@ -18,45 +20,7 @@ public class playerScript : MonoBehaviour
     void Update()
     {
         Move();
-        // Flick();
-        // if(this.transform.position.x > -4.7)
-        // {
-        //     if(Input.GetKey(KeyCode.LeftArrow))
-        //     {
-        //         this.transform.position += Vector3.left * barSpeed * Time.deltaTime;
-        //     }
-        // }
-        // if(this.transform.position.x < 4.7)
-        // {
-        //     if(Input.GetKey(KeyCode.RightArrow)){
-        //         this.transform.position += Vector3.right * barSpeed * Time.deltaTime;
-        //     }
-        // }
     }
-
-    // void Flick(){
-    //     if (Input.GetKeyDown(KeyCode.Mouse0)){
-    //         // マウスをクリックした座標
-    //         this.startPos = Input.mousePosition;
-    //     }
-        
-    //     // if(this.transform.position.x > -4.7)
-    //     // {
-    //     //     playerPos = new Vector3(touchStartPos.x,
-    //     //                             Input.mousePosition.y,
-    //     //                             Input.mousePosition.z);
-    //     // }
-    //     // if(this.transform.position.x < 4.7)
-    //     // {
-    //     //     if(Input.GetKey(KeyCode.RightArrow)){
-    //     //         this.transform.position += Vector3.right * barSpeed * Time.deltaTime;
-    //     //     }
-    //     // }
-    // }
-
-    float speed = 10.0f;
-    Vector3 preMousePos;
-
 
     void Move()
     {
@@ -68,10 +32,21 @@ public class playerScript : MonoBehaviour
         {
             Vector3 mousePosDiff = Input.mousePosition - preMousePos;
             preMousePos = Input.mousePosition;
-            Vector3 newPos = this.gameObject.transform.position + new Vector3(mousePosDiff.x / Screen.width, 0, 0 / Screen.height) * speed;
-
+            Vector3 newPos = this.gameObject.transform.position + new Vector3(mousePosDiff.x / Screen.width, 0, 0 / Screen.height) * barSpeed;
             this.transform.position = newPos;
+            if(this.transform.position.x < -4.7f)
+            {
+                Vector3 leftLimitPos = this.transform.position;
+                leftLimitPos.x = -4.6f;//初期値右端
+                this.transform.position = leftLimitPos;
+            } 
+            else if(this.transform.position.x > 4.7f)
+            {
+                Vector3 rightLimitPos = this.transform.position;
+                rightLimitPos.x = 4.6f;//初期値右端
+                this.transform.position = rightLimitPos;
+            }
         }
     }
-    
+
 }
